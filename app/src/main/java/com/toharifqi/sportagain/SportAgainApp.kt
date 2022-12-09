@@ -1,5 +1,6 @@
 package com.toharifqi.sportagain
 
+import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
@@ -10,10 +11,13 @@ import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Person
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
@@ -48,7 +52,6 @@ fun SportAgainApp(
             if (isInMainScreen) {
                 FloatingButton(
                     onClick = {
-                        navController.popBackStack()
                         navController.navigate(Screen.About.route) {
                             popUpTo(navController.graph.findStartDestination().id) {
                                 saveState = true
@@ -89,9 +92,10 @@ fun FloatingButton(
     onClick: () -> Unit
 ) {
     FloatingActionButton(
-        onClick = onClick
+        onClick = onClick,
+        contentColor = Color.White
     ) {
-
+        Icon(Icons.Default.Person, contentDescription = "about_page")
     }
 }
 
@@ -136,7 +140,8 @@ fun BottomBar(
     }
 }
 
-@Preview(showBackground = true)
+@Preview(showBackground = true, device = Devices.PIXEL_4, showSystemUi = true)
+@Preview(showBackground = true, device = Devices.PIXEL_4, uiMode = UI_MODE_NIGHT_YES, showSystemUi = true)
 @Composable
 fun SportAgainAppPreview() {
     SportAgainTheme {
