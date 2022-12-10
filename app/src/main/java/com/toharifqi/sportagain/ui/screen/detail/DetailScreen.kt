@@ -7,13 +7,15 @@ import androidx.compose.ui.Modifier
 @Composable
 fun DetailScreen(
     modifier: Modifier = Modifier,
+    sportId: String
 ) {
-    DetailContent(modifier)
+    DetailContent(modifier, sportId)
 }
 
 @Composable
 fun DetailContent(
     modifier: Modifier = Modifier,
+    sportId: String
 ) {
-    Text(text = "Detail")
+    Text(text = sportId)
 }

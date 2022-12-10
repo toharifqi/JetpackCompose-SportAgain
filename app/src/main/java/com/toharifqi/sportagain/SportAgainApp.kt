@@ -16,9 +16,8 @@ import androidx.compose.material.icons.filled.Person
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
@@ -42,6 +41,7 @@ fun SportAgainApp(
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route
     val isInMainScreen = currentRoute == Screen.Home.route || currentRoute == Screen.Favorite.route
+    val context = LocalContext.current
 
     Scaffold(
         bottomBar = {
@@ -72,13 +72,21 @@ fun SportAgainApp(
             modifier = modifier.padding(innerPadding)
         ) {
             composable(Screen.Home.route) {
-                HomeScreen()
+                HomeScreen(
+                    context = context,
+                    navigateToDetail = { sportId ->
+                        navController.navigate(Screen.SportDetail.createRoute(sportId))
+                    }
+                )
             }
             composable(Screen.Favorite.route) {
                 FavoriteScreen()
             }
-            composable(Screen.SportDetail.route) {
-                DetailScreen()
+            composable(
+                route = Screen.SportDetail.route
+            ) {
+                val sportId = it.arguments?.getString("sportId") ?: ""
+                DetailScreen(sportId = sportId)
             }
             composable(Screen.About.route) {
                 AboutScreen()
@@ -94,10 +102,14 @@ fun FloatingButton(
     onClick: () -> Unit
 ) {
     FloatingActionButton(
+        modifier = modifier,
         onClick = onClick,
-        contentColor = MaterialTheme.colors.onPrimary
+        contentColor = MaterialTheme.colors.primary
     ) {
-        Icon(Icons.Default.Person, contentDescription = "about_page")
+        Icon(
+            imageVector = Icons.Default.Person,
+            contentDescription = "about_page",
+        )
     }
 }
 
@@ -120,7 +132,9 @@ fun BottomBar(
             screen = Screen.Favorite
         )
     )
-    BottomNavigation {
+    BottomNavigation(
+        modifier = modifier
+    ) {
         navigationItems.map { item ->
             BottomNavigationItem(
                 icon = {

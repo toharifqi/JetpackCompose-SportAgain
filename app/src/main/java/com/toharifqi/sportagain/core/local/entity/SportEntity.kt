@@ -4,7 +4,7 @@ import androidx.annotation.NonNull
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.toharifqi.sportagain.core.remote.response.SportsItemResponse
+import com.toharifqi.sportagain.core.domain.SportDomainData
 
 @Entity(tableName = "sports")
 data class SportEntity(
@@ -13,11 +13,11 @@ data class SportEntity(
     @ColumnInfo(name = "sportId")
     var id: String,
 
-    @ColumnInfo(name = "format")
-    var format: String,
-
     @ColumnInfo(name = "name")
     var name: String,
+
+    @ColumnInfo(name = "format")
+    var format: String,
 
     @ColumnInfo(name = "thumb")
     var thumbnail: String,
@@ -28,12 +28,12 @@ data class SportEntity(
     @ColumnInfo(name = "description")
     var description: String
 ) {
-    constructor(response: SportsItemResponse) : this(
-        id = response.idSport,
-        format = response.strFormat,
-        name = response.strSport,
-        thumbnail = response.strSportThumb,
-        icon = response.strSportIconGreen,
-        description = response.strSportDescription,
+    constructor(domainData: SportDomainData) : this(
+        id = domainData.id,
+        name = domainData.name,
+        format = domainData.format,
+        thumbnail = domainData.thumbnail,
+        icon = domainData.icon,
+        description = domainData.description
     )
 }

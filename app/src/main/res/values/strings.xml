@@ -2,4 +2,7 @@
     <string name="app_name">Sport Again</string>
     <string name="menu_home">Home</string>
     <string name="menu_favorite">Favorite</string>
+    <string name="sport_format_team">is a "Team vs Team" sport, click the item to read more.</string>
+    <string name="sport_format_event">is an "Event" sport, click the item to read more.</string>
+    <string name="error">Can\'t load data, please check your internet connection.</string>
 </resources>

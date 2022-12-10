@@ -1,5 +1,6 @@
 package com.toharifqi.sportagain.core
 
+import com.toharifqi.sportagain.core.domain.SportDomainData
 import com.toharifqi.sportagain.core.local.entity.SportEntity
 import com.toharifqi.sportagain.core.local.room.SportDao
 import com.toharifqi.sportagain.core.remote.retrofit.ApiService
@@ -15,11 +16,11 @@ class SportRepository(
     private val sportDao: SportDao,
     private val dispatcher: CoroutineDispatcher
 ) {
-    fun getAllSports(): Flow<UiState<List<SportEntity>>> = flow {
+    fun getAllSports(): Flow<UiState<List<SportDomainData>>> = flow {
         try {
             val responses = apiService.getList()
             val sports = responses.sports.map {
-                SportEntity(it)
+                SportDomainData(it)
             }
             emit(UiState.Success(sports))
         } catch (e: Exception) {
@@ -29,8 +30,8 @@ class SportRepository(
 
     fun getFavoriteSports() = sportDao.getFavoriteSports().flowOn(dispatcher)
 
-    suspend fun setSportFavorite(sport: SportEntity) = withContext(dispatcher) {
-        sportDao.setSportFavorite(sport)
+    suspend fun setSportFavorite(sport: SportDomainData) = withContext(dispatcher) {
+        sportDao.setSportFavorite(SportEntity(sport))
     }
 
     suspend fun deleteFavoriteSport(sportId: String) = withContext(dispatcher) {
