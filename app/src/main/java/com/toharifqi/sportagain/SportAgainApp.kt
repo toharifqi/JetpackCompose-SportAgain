@@ -6,6 +6,7 @@ import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.FloatingActionButton
 import androidx.compose.material.Icon
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
@@ -59,7 +60,8 @@ fun SportAgainApp(
                             launchSingleTop = true
                             restoreState = true
                         }
-                    })
+                    }
+                )
             }
         },
         modifier = modifier
@@ -93,7 +95,7 @@ fun FloatingButton(
 ) {
     FloatingActionButton(
         onClick = onClick,
-        contentColor = Color.White
+        contentColor = MaterialTheme.colors.onPrimary
     ) {
         Icon(Icons.Default.Person, contentDescription = "about_page")
     }
@@ -140,11 +142,21 @@ fun BottomBar(
     }
 }
 
-@Preview(showBackground = true, device = Devices.PIXEL_4, showSystemUi = true)
-@Preview(showBackground = true, device = Devices.PIXEL_4, uiMode = UI_MODE_NIGHT_YES, showSystemUi = true)
+@Preview(showBackground = true)
+@Preview(showBackground = true, uiMode = UI_MODE_NIGHT_YES)
 @Composable
-fun SportAgainAppPreview() {
+fun BottomBarPreview() {
     SportAgainTheme {
-        SportAgainApp()
+        val navController = rememberNavController()
+        BottomBar(navController)
+    }
+}
+
+@Preview(showBackground = true)
+@Preview(showBackground = true, uiMode = UI_MODE_NIGHT_YES)
+@Composable
+fun FloatingButtonPreview() {
+    SportAgainTheme {
+        FloatingButton(onClick = {  })
     }
 }
