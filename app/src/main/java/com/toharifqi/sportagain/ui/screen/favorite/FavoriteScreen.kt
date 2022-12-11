@@ -46,7 +46,7 @@ fun FavoriteContent(
     if (sports.isNotEmpty()) {
         LazyColumn(
             modifier = modifier,
-            contentPadding = PaddingValues(vertical = 20.dp)
+            contentPadding = PaddingValues(bottom = 48.dp)
         ) {
             items(
                 items = sports,

@@ -7,6 +7,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -71,6 +72,7 @@ fun AboutContent(
             contentScale = ContentScale.Crop,
             modifier = Modifier
                 .height(300.dp)
+                .fillMaxWidth()
                 .clip(RoundedCornerShape(bottomStart = 16.dp, bottomEnd = 16.dp))
                 .constrainAs(background) {
                     top.linkTo(parent.top)
@@ -88,7 +90,10 @@ fun AboutContent(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Button(
-                modifier = Modifier.width(200.dp),
+                modifier = Modifier
+                    .width(200.dp)
+                    .height(48.dp)
+                ,
                 onClick = {
                     uriHandler.openUri(context.getString(R.string.author_linkedin))
                 }
@@ -97,8 +102,12 @@ fun AboutContent(
                     text = stringResource(R.string.linkedin)
                 )
             }
+            Spacer(modifier = Modifier.height(18.dp))
             Button(
-                modifier = Modifier.width(200.dp),
+                modifier = Modifier
+                    .width(200.dp)
+                    .height(48.dp)
+                ,
                 onClick = {
                     uriHandler.openUri(context.getString(R.string.author_github))
                 }

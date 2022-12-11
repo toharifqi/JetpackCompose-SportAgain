@@ -53,7 +53,7 @@ fun HomeContent(
     if (sports.isNotEmpty()) {
         LazyColumn(
             modifier = modifier,
-            contentPadding = PaddingValues(top = 20.dp, bottom = 48.dp)
+            contentPadding = PaddingValues(bottom = 48.dp)
         ) {
             items(sports) { sport ->
                 SportItem(
