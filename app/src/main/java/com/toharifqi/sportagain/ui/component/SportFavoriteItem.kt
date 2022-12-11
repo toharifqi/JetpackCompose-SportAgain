@@ -7,12 +7,17 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.Card
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material.icons.filled.DeleteForever
 import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.FavoriteBorder
+import androidx.compose.material.icons.filled.RestoreFromTrash
 import androidx.compose.material.icons.outlined.FavoriteBorder
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -27,18 +32,21 @@ import coil.compose.AsyncImage
 import com.toharifqi.sportagain.core.domain.SportDomainData
 import com.toharifqi.sportagain.ui.theme.SportAgainTheme
 
+@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun SportFavoriteItem(
     modifier: Modifier = Modifier,
     sport: SportDomainData,
     isFavorite: Boolean,
+    onClick: () -> Unit,
     onFavoriteClick: () -> Unit
 ) {
     Card(
         backgroundColor = MaterialTheme.colors.primary,
         shape = MaterialTheme.shapes.medium,
         modifier = modifier.padding(vertical = 4.dp, horizontal = 8.dp),
-        elevation = 2.dp
+        elevation = 2.dp,
+        onClick = onClick
     ) {
         Row(
             modifier = Modifier.padding(8.dp),
@@ -49,8 +57,8 @@ fun SportFavoriteItem(
                 contentDescription = "icon",
                 contentScale = ContentScale.Crop,
                 modifier = modifier
-                    .padding(vertical = 16.dp)
-                    .size(80.dp)
+                    .padding(16.dp)
+                    .size(48.dp)
             )
             Spacer(modifier = Modifier.width(8.dp))
             Column(modifier = Modifier.weight(1f)) {
@@ -72,7 +80,7 @@ fun SportFavoriteItem(
                 }
             ) {
                 Icon(
-                    imageVector = if (isFavorite) Icons.Filled.Favorite else Icons.Outlined.FavoriteBorder,
+                    imageVector = if (isFavorite) Icons.Filled.DeleteForever else Icons.Filled.FavoriteBorder,
                     contentDescription = if (isFavorite) "Delete from favorite" else "Add to favorite"
                 )
             }
@@ -94,9 +102,9 @@ fun SportFavoriteItemPreview() {
     SportAgainTheme {
         SportFavoriteItem(
             sport = dummySport,
-            isFavorite = false
-        ) {
-
-        }
+            isFavorite = false,
+            onClick = {},
+            onFavoriteClick = {}
+        )
     }
 }

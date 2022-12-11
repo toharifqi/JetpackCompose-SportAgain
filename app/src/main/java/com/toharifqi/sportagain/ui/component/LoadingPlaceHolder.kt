@@ -10,20 +10,20 @@ import com.toharifqi.sportagain.R.raw
 import com.toharifqi.sportagain.ui.theme.SportAgainTheme
 
 @Composable
-fun ErrorIndicator(
+fun LoadingPlaceHolder(
     modifier: Modifier = Modifier
 ) {
     Placeholder(
         modifier = modifier,
-        rawId = raw.error_lottie,
-        text = stringResource(R.string.error)
+        rawId = raw.loading_lottie,
+        text = stringResource(R.string.loading)
     )
 }
 
 @Preview(showBackground = true, device = Devices.PIXEL_4, showSystemUi = true)
 @Composable
-fun ErrorIndicatorPreview() {
+fun LoadingIndicatorPreview() {
     SportAgainTheme {
-        ErrorIndicator()
+        LoadingPlaceHolder()
     }
 }

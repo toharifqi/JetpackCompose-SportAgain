@@ -7,7 +7,6 @@ import com.toharifqi.sportagain.core.domain.SportDomainData
 import com.toharifqi.sportagain.ui.common.UiState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.launch
 
 class HomeViewModel(

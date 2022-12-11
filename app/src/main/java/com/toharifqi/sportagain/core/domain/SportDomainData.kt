@@ -1,6 +1,7 @@
 package com.toharifqi.sportagain.core.domain
 
 import android.os.Parcelable
+import com.toharifqi.sportagain.core.local.entity.SportEntity
 import com.toharifqi.sportagain.core.remote.response.SportsItemResponse
 import kotlinx.parcelize.Parcelize
 
@@ -20,5 +21,14 @@ data class SportDomainData(
         thumbnail = response.strSportThumb,
         icon = response.strSportIconGreen,
         description = response.strSportDescription
+    )
+
+    constructor(entity: SportEntity) : this(
+        id = entity.id,
+        name = entity.name,
+        format = entity.format,
+        thumbnail = entity.thumbnail,
+        icon = entity.icon,
+        description = entity.description
     )
 }

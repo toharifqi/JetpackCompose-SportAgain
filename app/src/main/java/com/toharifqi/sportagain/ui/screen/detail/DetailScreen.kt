@@ -29,7 +29,6 @@ import com.toharifqi.sportagain.ui.theme.SportAgainTheme
 
 @Composable
 fun DetailScreen(
-    modifier: Modifier = Modifier,
     sport: SportDomainData,
     context: Context,
     viewModel: DetailViewModel = viewModel(
@@ -39,7 +38,6 @@ fun DetailScreen(
     viewModel.setSportId(sport.id)
     viewModel.favoriteStatus.collectAsState(initial = false).value.let {
         DetailContent(
-            modifier = modifier,
             sport = sport,
             favoriteStatus = it,
             onFavoriteClick = {
@@ -94,7 +92,8 @@ fun DetailContent(
                 },
             sport = sport,
             isFavorite = favoriteStatus,
-            onFavoriteClick = onFavoriteClick
+            onFavoriteClick = onFavoriteClick,
+            onClick = {}
         )
 
     }

@@ -86,7 +86,16 @@ fun SportAgainApp(
                 )
             }
             composable(Screen.Favorite.route) {
-                FavoriteScreen()
+                FavoriteScreen(
+                    context = context,
+                    navigateToDetail = { sport ->
+                        navController.currentBackStackEntry?.savedStateHandle?.set(
+                            SPORT_DETAIL_KEY,
+                            sport
+                        )
+                        navController.navigate(Screen.SportDetail.route)
+                    }
+                )
             }
             composable(
                 route = Screen.SportDetail.route

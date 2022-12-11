@@ -9,6 +9,7 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
 
 class SportRepository(
@@ -28,7 +29,11 @@ class SportRepository(
         }
     }.flowOn(dispatcher)
 
-    fun getFavoriteSports() = sportDao.getFavoriteSports().flowOn(dispatcher)
+    fun getFavoriteSports() = sportDao.getFavoriteSports().map { entities ->
+        entities.map {
+            SportDomainData(it)
+        }
+    }.flowOn(dispatcher)
 
     suspend fun setSportFavorite(sport: SportDomainData) = withContext(dispatcher) {
         sportDao.setSportFavorite(SportEntity(sport))

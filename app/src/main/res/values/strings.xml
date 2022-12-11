@@ -6,4 +6,7 @@
     <string name="sport_format_event">is an "Event" sport, click the item to read more.</string>
     <string name="error">Can\'t load data, please check your internet connection.</string>
     <string name="loading">Loading, please wait…</string>
+    <string name="empty">
+        You don\'t have favorite sports yet, click the love icon to add one.
+    </string>
 </resources>
