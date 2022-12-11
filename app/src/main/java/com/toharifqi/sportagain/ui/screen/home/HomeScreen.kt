@@ -22,7 +22,7 @@ fun HomeScreen(
     viewModel: HomeViewModel = viewModel(
         factory = ViewModelFactory(Injection.provideSportRepository(context))
     ),
-    navigateToDetail: (String) -> Unit
+    navigateToDetail: (SportDomainData) -> Unit
 ) {
     viewModel.uiState.collectAsState(initial = UiState.Loading).value.let { state ->
         when (state) {
@@ -48,7 +48,7 @@ fun HomeScreen(
 fun HomeContent(
     modifier: Modifier = Modifier,
     sports: List<SportDomainData>,
-    navigateToDetail: (String) -> Unit
+    navigateToDetail: (SportDomainData) -> Unit
 ) {
     if (sports.isNotEmpty()) {
         LazyColumn(
@@ -58,7 +58,7 @@ fun HomeContent(
                 SportItem(
                     sport = sport,
                     onClick = {
-                        navigateToDetail(sport.id)
+                        navigateToDetail(sport)
                     }
                 )
             }

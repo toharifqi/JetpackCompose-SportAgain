@@ -25,7 +25,9 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.toharifqi.sportagain.core.domain.SportDomainData
 import com.toharifqi.sportagain.ui.navigation.NavigationItem
+import com.toharifqi.sportagain.ui.navigation.SPORT_DETAIL_KEY
 import com.toharifqi.sportagain.ui.navigation.Screen
 import com.toharifqi.sportagain.ui.screen.about.AboutScreen
 import com.toharifqi.sportagain.ui.screen.detail.DetailScreen
@@ -74,8 +76,12 @@ fun SportAgainApp(
             composable(Screen.Home.route) {
                 HomeScreen(
                     context = context,
-                    navigateToDetail = { sportId ->
-                        navController.navigate(Screen.SportDetail.createRoute(sportId))
+                    navigateToDetail = { sport ->
+                        navController.currentBackStackEntry?.savedStateHandle?.set(
+                            SPORT_DETAIL_KEY,
+                            sport
+                        )
+                        navController.navigate(Screen.SportDetail.route)
                     }
                 )
             }
@@ -85,8 +91,16 @@ fun SportAgainApp(
             composable(
                 route = Screen.SportDetail.route
             ) {
-                val sportId = it.arguments?.getString("sportId") ?: ""
-                DetailScreen(sportId = sportId)
+                val sport =
+                    navController.previousBackStackEntry?.savedStateHandle?.get<SportDomainData>(
+                        SPORT_DETAIL_KEY
+                    )
+                if (sport != null) {
+                    DetailScreen(
+                        sport = sport,
+                        context = context
+                    )
+                }
             }
             composable(Screen.About.route) {
                 AboutScreen()
@@ -171,6 +185,6 @@ fun BottomBarPreview() {
 @Composable
 fun FloatingButtonPreview() {
     SportAgainTheme {
-        FloatingButton(onClick = {  })
+        FloatingButton(onClick = { })
     }
 }

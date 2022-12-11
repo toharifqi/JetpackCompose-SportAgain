@@ -1,7 +1,10 @@
 package com.toharifqi.sportagain.core.domain
 
+import android.os.Parcelable
 import com.toharifqi.sportagain.core.remote.response.SportsItemResponse
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class SportDomainData(
     var id: String,
     var name: String,
@@ -9,7 +12,7 @@ data class SportDomainData(
     var thumbnail: String,
     var icon: String,
     var description: String
-) {
+) : Parcelable {
     constructor(response: SportsItemResponse) : this(
         id = response.idSport,
         name = response.strSport,
