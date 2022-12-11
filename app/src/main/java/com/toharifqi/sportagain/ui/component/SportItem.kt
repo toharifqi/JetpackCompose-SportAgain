@@ -58,7 +58,7 @@ fun SportItem(
     Card(
         backgroundColor = MaterialTheme.colors.primary,
         shape = MaterialTheme.shapes.medium,
-        modifier = Modifier.padding(vertical = 4.dp, horizontal = 8.dp),
+        modifier = modifier.padding(vertical = 4.dp, horizontal = 8.dp),
         onClick = onClick,
         elevation = 2.dp
     ) {

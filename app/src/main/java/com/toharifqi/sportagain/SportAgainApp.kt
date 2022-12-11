@@ -26,6 +26,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.toharifqi.sportagain.core.domain.SportDomainData
+import com.toharifqi.sportagain.ui.component.TopBar
 import com.toharifqi.sportagain.ui.navigation.NavigationItem
 import com.toharifqi.sportagain.ui.navigation.SPORT_DETAIL_KEY
 import com.toharifqi.sportagain.ui.navigation.Screen
@@ -46,6 +47,11 @@ fun SportAgainApp(
     val context = LocalContext.current
 
     Scaffold(
+        topBar = {
+            if (isInMainScreen) {
+                TopBar()
+            }
+        },
         bottomBar = {
             if (isInMainScreen) {
                 BottomBar(navController)
@@ -107,12 +113,17 @@ fun SportAgainApp(
                 if (sport != null) {
                     DetailScreen(
                         sport = sport,
-                        context = context
+                        context = context,
+                        navigateBack = {
+                            navController.navigateUp()
+                        }
                     )
                 }
             }
             composable(Screen.About.route) {
-                AboutScreen()
+                AboutScreen(context = context) {
+                    navController.navigateUp()
+                }
             }
         }
 

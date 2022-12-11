@@ -7,6 +7,13 @@
     <string name="error">Can\'t load data, please check your internet connection.</string>
     <string name="loading">Loading, please wait…</string>
     <string name="empty">
-        You don\'t have favorite sports yet, click the love icon to add one.
+        You don\'t have any favorite sport yet, click the love icon to add one.
     </string>
+    <string name="back">back</string>
+    <string name="author_name">Rifqi Naufal Tohari</string>
+    <string name="author_email">rifqinaufaltohari@gmail.com</string>
+    <string name="author_linkedin">https://linkedin.com/in/rifqi-naufal-tohari</string>
+    <string name="linkedin">LinkedIn</string>
+    <string name="author_github">https://github.com/toharifqi</string>
+    <string name="github">GitHub</string>
 </resources>

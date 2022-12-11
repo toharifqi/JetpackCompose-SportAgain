@@ -10,9 +10,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.toharifqi.sportagain.di.Injection
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.toharifqi.sportagain.core.domain.SportDomainData
+import com.toharifqi.sportagain.di.Injection
 import com.toharifqi.sportagain.ui.ViewModelFactory
 import com.toharifqi.sportagain.ui.component.EmptyPlaceHolder
 import com.toharifqi.sportagain.ui.component.SportFavoriteItem
