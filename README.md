@@ -28,4 +28,4 @@ https://user-images.githubusercontent.com/44081111/208222523-26cb286e-f76d-49a0-
 - Show detailed information from selected sport<br>
 <img src="/screenshots/desc1.jpg" width="25%">    <img src="/screenshots/desc2.jpg" width="25%">    <img src="/screenshots/desc_dark.jpg" width="25%"><br>
 - Save favorite sport<br>
-<img src="/screenshots/favorite.jpg" width="25%">    <img src="/screenshots/favorite_dark.jpg" width="25%"><br>
+<img src="/screenshots/favorite_empty.jpg" width="25%">    <img src="/screenshots/favorite.jpg" width="25%">    <img src="/screenshots/favorite_dark.jpg" width="25%"><br>
