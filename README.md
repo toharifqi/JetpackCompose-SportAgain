@@ -20,7 +20,7 @@ https://github.com/toharifqi/JetpackCompose-SportAgain/raw/master/app/release/Sp
 - API: https://www.thesportsdb.com/
 
 #### Preview Video
-![Preview Video](/recording/preview_video.mp4)
+https://user-images.githubusercontent.com/44081111/208222523-26cb286e-f76d-49a0-b972-448f9604885b.mp4
 
 #### Features
 - Show list of sports<br>
