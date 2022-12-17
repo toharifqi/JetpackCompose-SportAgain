@@ -1,10 +1,12 @@
 package com.toharifqi.sportagain.ui.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.material.Colors
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.darkColors
 import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 private val DarkColorPalette = darkColors(
     primary = Navy,
@@ -31,10 +33,19 @@ private val LightColorPalette = lightColors(
 
 @Composable
 fun SportAgainTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable () -> Unit) {
-    val colors = if (darkTheme) {
-        DarkColorPalette
+    val systemUiController = rememberSystemUiController()
+    val colors: Colors
+
+    if (darkTheme) {
+        colors = DarkColorPalette
+        systemUiController.setSystemBarsColor(
+            color = Navy
+        )
     } else {
-        LightColorPalette
+        colors = LightColorPalette
+        systemUiController.setSystemBarsColor(
+            color = LightBlue
+        )
     }
 
     MaterialTheme(
